@@ -22,32 +22,10 @@ class _HomePageState extends State<HomePage> {
   ];
 
   List<String> selectedCategories = [];
-  List<Pet> _filteredPets = [];
-  TextEditingController _searchController = TextEditingController();
-
-  @override
-  void initState() {
-    super.initState();
-    _filteredPets = petList;
-  }
-
-  @override
-  void dispose() {
-    _searchController.dispose();
-    super.dispose();
-  }
-
-  void _filterPets(String query) {
-    setState(() {
-      _filteredPets = petList
-          .where((pet) => pet.name.toLowerCase().contains(query.toLowerCase()))
-          .toList();
-    });
-  }
 
   @override
   Widget build(BuildContext context) {
-    _filteredPets = _filteredPets.where((pet) {
+    final filterProducts = petList.where((pet) {
       return selectedCategories.isEmpty ||
           selectedCategories.contains(pet.category);
     }).toList();
@@ -67,19 +45,18 @@ class _HomePageState extends State<HomePage> {
         centerTitle: true,
         leading: null,
         actions: [
-          TextButton(
-              onPressed: () {},
-              child: Container(
-                  margin: const EdgeInsets.only(right: 5),
-                  padding: const EdgeInsets.all(6),
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(10),
-                    color: Theme.of(context).colorScheme.primary,
-                  ),
-                  child: Icon(
-                    Icons.pets_rounded,
-                    color: Theme.of(context).colorScheme.tertiary,
-                  )))
+          Container(
+            padding: const EdgeInsets.all(4),
+            margin: const EdgeInsets.only(right: 8),
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(8),
+              color: Theme.of(context).colorScheme.primary,
+            ),
+            child: Icon(
+              Icons.pets_rounded,
+              color: Theme.of(context).colorScheme.tertiary,
+            ),
+          )
         ],
       ),
       drawer: Drawer(
@@ -183,10 +160,6 @@ class _HomePageState extends State<HomePage> {
                           borderSide: BorderSide.none,
                         ),
                       ),
-                      onChanged: (value) {
-                        _filterPets(value);
-                      },
-                      controller: _searchController,
                     ),
                   ),
                   Container(
@@ -239,9 +212,9 @@ class _HomePageState extends State<HomePage> {
                   ),
                   Expanded(
                     child: ListView.builder(
-                        itemCount: _filteredPets.length,
+                        itemCount: filterProducts.length,
                         itemBuilder: (context, index) {
-                          final pet = _filteredPets[index];
+                          final pet = filterProducts[index];
                           return GestureDetector(
                             onTap: () {
                               Navigator.push(
