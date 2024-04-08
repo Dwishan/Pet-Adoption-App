@@ -44,7 +44,6 @@ class _PetDetailsPageState extends State<PetDetailsPage> {
 
   @override
   Widget build(BuildContext context) {
-    // final adoptionBloc = BlocProvider.of<AdoptionBloc>(context);
     final size = MediaQuery.of(context).size;
     return Scaffold(
       appBar: AppBar(
@@ -210,32 +209,6 @@ class _PetDetailsPageState extends State<PetDetailsPage> {
                   ),
                 ),
               ),
-              // ElevatedButton(
-              //   onPressed: () {
-              //     showDialog(
-              //       context: context,
-              //       builder: (context) {
-              //         return AlertDialog(
-              //           title: Text('Adoption Confirmation'),
-              //           content: Text('You\'ve now adopted ${widget.pet.name}'),
-              //           actions: [
-              //             TextButton(
-              //               onPressed: () {
-              //                 Provider.of<PetProvider>(context, listen: false)
-              //                     .addToAdoptedPets(widget.pet);
-              //                 widget.pet.isAdopted = true;
-              //                 Navigator.pop(context); // Close dialog
-              //                 Navigator.pop(context); // Navigate back to Home Page
-              //               },
-              //               child: Text('OK'),
-              //             ),
-              //           ],
-              //         );
-              //       },
-              //     );
-              //   },
-              //   child: Text('Adopt Me'),
-              // ),
               GestureDetector(
                 onTap: () {
                   showDialog(
@@ -260,10 +233,6 @@ class _PetDetailsPageState extends State<PetDetailsPage> {
                         Center(
                           child: TextButton(
                             onPressed: () async {
-                              // Provider.of<PetProvider>(context, listen: false)
-                              //     .addToAdoptedPets(widget.pet);
-                              // widget.pet.isAdopted = true;
-                              // widget.onAdopted(true);
                               if (isPlaying) {
                                 _controller.play();
                               } else {

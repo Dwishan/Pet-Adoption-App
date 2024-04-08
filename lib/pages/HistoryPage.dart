@@ -10,8 +10,6 @@ class HistoryPage extends StatefulWidget {
 }
 
 class _HistoryPageState extends State<HistoryPage> {
-  // List<Pet> adoptedPets = [];
-
   @override
   Widget build(BuildContext context) {
     final petProvider = context.watch<PetProvider>();
@@ -37,7 +35,6 @@ class _HistoryPageState extends State<HistoryPage> {
           return Dismissible(
             key: Key(pet.name),
             onDismissed: (direction) {
-              // Remove the pet from the list of adopted pets when dismissed
               petProvider.removeAdoptedPet(pet);
             },
             background: Container(

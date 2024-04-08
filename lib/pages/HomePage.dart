@@ -126,14 +126,8 @@ class _HomePageState extends State<HomePage> {
         children: [
           Expanded(
             child: Container(
-              // width: double.infinity,
-              // clipBehavior: Clip.antiAliasWithSaveLayer,
-              // margin: const EdgeInsets.only(top: 20),
               decoration: BoxDecoration(
                 color: Theme.of(context).colorScheme.background,
-                // borderRadius: const BorderRadius.vertical(
-                //   top: Radius.circular(30),
-                // ),
               ),
               child: Column(
                 children: [

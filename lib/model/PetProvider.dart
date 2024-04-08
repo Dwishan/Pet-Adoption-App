@@ -57,7 +57,6 @@ class PetProvider extends ChangeNotifier {
         'price': pet.price,
         'image': pet.imageUrl,
         'description': pet.description,
-        // Add other properties if needed
       };
       return jsonEncode(json);
     }).toList();
